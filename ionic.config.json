@@ -1,0 +1,7 @@
+{
+  "name": "$JuegoAngular",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
