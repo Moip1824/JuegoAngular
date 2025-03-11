@@ -1,20 +1,41 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title>Juego de Palabras</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <div class="game-container" *ngIf="currentImage.word">
+    <img [src]="currentImage.src" class="game-image" alt="Imagen a adivinar" />
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <div class="selected-letters">
+  <span *ngFor="let letter of selectedLetters"
+        class="selected-letter"
+        [ngClass]="{'space': letter === ' '}">
+    {{ letter }}
+  </span>
+    </div>
+
+    <div class="letters-container">
+      <ion-button *ngFor="let letterInfo of shuffledLetters"
+                  (click)="selectLetter(letterInfo)"
+                  class="letter-button"
+                  [disabled]="letterInfo.count >= 1">
+        {{ letterInfo.letter }}
+      </ion-button>
+    </div>
+
+    <div class="button-container">
+      <ion-button (click)="removeLastLetter()" expand="full" color="danger">
+        Borrar última letra
+      </ion-button>
+      <ion-button (click)="checkAnswer()" expand="full" color="success">
+        Verificar
+      </ion-button>
+    </div>
+
+    <ion-text *ngIf="message" class="game-message">
+      {{ message }}
+    </ion-text>
   </div>
 </ion-content>

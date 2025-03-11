@@ -1,27 +1,77 @@
-#container {
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 20px;
   text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
-#container strong {
+.game-image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+}
+
+.selected-letters {
+  display: flex;
+  gap: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.selected-letter {
+  background-color: #3880ff;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  min-width: 40px;
+
+  &.space {
+    background-color: transparent;
+    box-shadow: none;
+    min-width: 20px;
+  }
+}
+
+.button-container {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.letters-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.letter-button {
   font-size: 20px;
-  line-height: 26px;
+  padding: 15px;
+  border-radius: 10px;
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+
+  &[disabled] {
+    opacity: 0.5;
+  }
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+.letter-button:active {
+  transform: scale(0.9);
 }
 
-#container a {
-  text-decoration: none;
+.game-message {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
 }
